@@ -35,8 +35,6 @@ void update(const float temp, int grid[L][L])
 double calculate(int grid[L][L], int* M_max)
 {
     int E = 0;
-    *M_max = 0;
-    
     for (unsigned int i = 0; i < L; ++i) {
         for (unsigned int j = 0; j < L; ++j) {
             int spin = grid[i][j];
@@ -45,11 +43,9 @@ double calculate(int grid[L][L], int* M_max)
             int spin_neigh_w = grid[i][(j + L - 1) % L];
             int spin_neigh_s = grid[(i + L - 1) % L][j];
 
-            E += -spin * (spin_neigh_n + spin_neigh_e + spin_neigh_w + spin_neigh_s);
+            E += (spin * spin_neigh_n) + (spin * spin_neigh_e) + (spin * spin_neigh_w) + (spin * spin_neigh_s);
             *M_max += spin;
         }
     }
-    
-    return E / 2.0;
+    return -((double)E / 2.0);
 }
-
