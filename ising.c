@@ -31,7 +31,7 @@ void update(const float temp, int grid[L][L])
     }
 }
 
-
+//Hola mundo
 double calculate(int grid[L][L], int* M_max)
 {
     int E = 0;
