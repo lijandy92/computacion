@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-//Modificada 
+//Modificada Comentada
 void update(const float temp, int grid[L][L])
 {
     // typewriter update
