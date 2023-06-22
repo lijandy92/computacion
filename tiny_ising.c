@@ -95,21 +95,6 @@ static void init(int grid[L][L])
         }
     }
 }
-
-static void generate_random_exp(int grid[L][L], float random_vec[L][L], float exp_vec[]) {
-    for (unsigned int i = 0; i < L; ++i) {
-        for (unsigned int j = 0; j < L; ++j) {
-            random_vec[i][j] = rand() / (float)RAND_MAX;
-        }
-    }
-
-    for (int delta_E = -4; delta_E <= 4; ++delta_E) {
-        exp_vec[delta_E + 4] = expf(-delta_E / temp);
-    }
-}
-
-
-
 int main(void)
 {
     // parameter checking
@@ -145,11 +130,6 @@ int main(void)
     // clear the grid
     int grid[L][L] = { { 0 } };
     init(grid);
-	
-	    // Generate random_vec and exp_vec
-    float random_vec[L][L];
-    float exp_vec[9];
-    generate_random_exp(grid, random_vec, exp_vec);
 
     // temperature increasing cycle
     cycle(grid, TEMP_INITIAL, TEMP_FINAL, TEMP_DELTA, DELTA_T, stat);
