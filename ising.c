@@ -1,5 +1,3 @@
-
-
 //Modificada Comentada
 
 #include "ising.h"
@@ -9,7 +7,6 @@
 
 void update(const float temp, int grid[L][L])
 {
-    // typewriter update
     for (unsigned int i = 0; i < L; ++i) {
             int spin_neigh_e = grid[i][(j + 1) % L];
             int spin_neigh_w = grid[i][(j + L - 1) % L];
