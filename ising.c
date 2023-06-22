@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-//Modificada Comentada
+//Modificada Comentada version1
 void update(const float temp, int grid[L][L])
 {
     for (unsigned int i = 0; i < L; ++i) {
