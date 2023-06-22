@@ -2,6 +2,8 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <immintrin.h>
+
 
 //Modificada Comentada version1
 void update(const float temp, int grid[L][L])
