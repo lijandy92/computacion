@@ -35,7 +35,8 @@ void update(const float temp, int grid[L][L])
             }
         }
 
-
+	}
+}
 
 //Modificada
 double calculate(int grid[L][L], int* M_max)
