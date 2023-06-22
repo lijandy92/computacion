@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <xmmintrin.h>
 
+#include "ising.h"
+#include <math.h>
+#include <stdlib.h>
+#include <emmintrin.h>
+
 void update(const float temp, int grid[L][L])
 {
     for (unsigned int i = 0; i < L; ++i) {
@@ -38,22 +43,24 @@ void update(const float temp, int grid[L][L])
             // Compare delta_E with zero
             __m128i mask_delta_E = _mm_cmple_epi32(delta_E, _mm_setzero_si128());
 
-            // Compute expf(-delta_E / temp)
-            __m128 exp_delta_E_temp = _mm_div_ps(_mm_set1_ps(1.0f), _mm_exp_ps(_mm_div_ps(_mm_cvtepi32_ps(delta_E), _mm_set1_ps(temp))));
+            // Convert mask_delta_E to a mask for maskload
+            int mask = _mm_movemask_ps(_mm_castsi128_ps(mask_delta_E));
 
-            // Compare p with exp_delta_E_temp
-            __m128 mask_p = _mm_cmple_ps(p, exp_delta_E_temp);
+            // Mask load spin_old using the mask
+            __m128i masked_spin_old = _mm_maskload_epi32((const int*)&grid[i][j], mask);
 
-            // Mask grid with spin_new based on comparison results
-            __m128i masked_spin_new = _mm_and_si128(_mm_castps_si128(mask_p), spin_new);
-            __m128i masked_spin_old = _mm_andnot_si128(_mm_castps_si128(mask_p), spin_old);
-            __m128i updated_spin = _mm_or_si128(masked_spin_new, masked_spin_old);
+            // Mask spin_new using the mask
+            __m128i masked_spin_new = _mm_and_si128(spin_new, mask_delta_E);
 
-            // Store updated_spin back to grid
-            _mm_storeu_si128((__m128i*)&grid[i][j], updated_spin);
+            // Merge masked_spin_old and masked_spin_new
+            __m128i updated_spin = _mm_or_si128(masked_spin_old, masked_spin_new);
+
+            // Mask store updated_spin back to grid using the mask
+            _mm_maskstore_epi32((int*)&grid[i][j], mask, updated_spin);
         }
     }
 }
+
 
 
 
