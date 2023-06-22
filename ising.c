@@ -1,10 +1,6 @@
 
 
 //Modificada Comentada
-#include "ising.h"
-#include <math.h>
-#include <stdlib.h>
-#include <xmmintrin.h>
 
 #include "ising.h"
 #include <math.h>
