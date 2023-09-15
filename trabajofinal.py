@@ -34,7 +34,7 @@ import multiprocessing
 #%%
 #Nuevo cambio paraprueba lo quiero implementar
 # Ruta de la carpeta que contiene las imágenes TIFF
-ruta_carpeta = r'C:\Users\admin\Desktop\Github\computacion\202102'
+ruta_carpeta = r'C:\Users\admin\Desktop\Github\computacion\20210226'
 
 # Inicializar una lista para almacenar las imágenes TIFF
 bandas_landsat = []
