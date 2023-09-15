@@ -32,8 +32,9 @@ import threading
 import time
 import multiprocessing
 #%%
+#Nuevo cambio paraprueba lo quiero implementar
 # Ruta de la carpeta que contiene las imágenes TIFF
-ruta_carpeta = r'D:\Cursos\Computacion Paralela\Trabajo de computacion paralela\20210226'
+ruta_carpeta = r'C:\Users\admin\Desktop\Github\computacion\202102'
 
 # Inicializar una lista para almacenar las imágenes TIFF
 bandas_landsat = []
@@ -85,7 +86,7 @@ print("Cantidad de NaN por banda:", cantidad_nan_por_banda)
 
 #%%
 # Ruta de la carpeta que contiene los mapas de humedad
-ruta_mapa =  r'D:\Cursos\Computacion Paralela\Trabajo de computacion paralela\mapa humedad'
+ruta_mapa =  r'C:\Users\admin\Desktop\Github\computacion\mapa humedad'
 
 # Inicializar una lista para almacenar las imágenes TIFF
 mapa_humedad = []
